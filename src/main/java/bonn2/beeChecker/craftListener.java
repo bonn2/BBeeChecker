@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class craftListener implements Listener {
-    @EventHandler
+/*    @EventHandler
     public void onPlayerPickup(CraftItemEvent e) {
         ItemStack item = e.getInventory().getResult();
         if (item.getType() == Material.BEEHIVE || item.getType() == Material.BEE_NEST) {
@@ -39,5 +39,5 @@ public class craftListener implements Listener {
             
             item.setItemMeta(meta);
         }
-    }
+    } */
 }

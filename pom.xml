@@ -4,9 +4,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>bonn2.invChecker</groupId>
-  <artifactId>BonnBeeInfo</artifactId>
-  <version>1.6</version>
+  <groupId>bonn2.beeChecker</groupId>
+  <artifactId>BBeeChecker</artifactId>
+  <version>1.7</version>
 
   <packaging>jar</packaging>
   <properties>
