@@ -2,8 +2,8 @@ package bonn2.beeChecker;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
-// import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,7 +15,10 @@ import org.bukkit.inventory.ItemStack;
 import net.minecraft.server.v1_15_R1.BlockPosition;
 import net.minecraft.server.v1_15_R1.TileEntityBeehive;
 
-public class beeCheckListener implements Listener {
+public class beeCheckListener implements Listener  {
+    
+    FileConfiguration config = Main.plugin.getConfig();
+
     @EventHandler
     public void onPlayerUse(PlayerInteractEvent e) {
         Player p = e.getPlayer();
@@ -31,10 +34,23 @@ public class beeCheckListener implements Listener {
                 Object[] a = te.m().toArray(); // Gets Bee nbt and adds it into an array
                 numBees = a.length; // Calculates amount by using number of entrys in array
 
+                String message;
                 if (numBees == 1) {
-                    p.sendMessage("There is §6" + numBees + " bee §rin this hive.");
+                    message = config.getString("lang." + config.getString("Language") + ".AmountSingle");
+
+                    while (message.contains("%number%")) {
+                        message = message.replaceFirst("%number%", "" + numBees);
+                    }
+
+                    p.sendMessage(message);
                 } else {
-                    p.sendMessage("There are §6" + numBees + " bees §rin this hive.");
+                    message = config.getString("lang." + config.getString("Language") + ".AmountPlural");
+
+                    while (message.contains("%number%")) {
+                        message = message.replaceFirst("%number%", "" + numBees);
+                    }
+
+                    p.sendMessage(message);
                 }
             }
         } /* else if (e.getHand().equals(EquipmentSlot.HAND) && e.getAction().equals(Action.RIGHT_CLICK_AIR)) {
