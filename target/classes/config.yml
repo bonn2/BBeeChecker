@@ -5,16 +5,24 @@
 #                 #
 ###################
 
+# Report number of bees when a player right click on a hive
+ClickOnBlock: true
+
+# Report number of bees when a player right clicks with a hive in their hand
+ClickInAir: true
 
 # Add lore to hives (This will persist after plugin is uninstalled)
 Lore: true
 
-# Language preset. If you don't see yours in the list you can add one using the example format below
-Language: enUS
-lang:
-  enUS:
-    AmountSingle: §rThere is §6%number% bee §rin this hive.
-    AmountPlural: §rThere are §6%number% bees §rin this hive.
-  example:
-    AmountSingle: Write what you want here
-    AmountPlural: And here
+# Messages the plugin will use.
+# Use %number% to represent the number of bees
+ChatMessage:
+  AmountSingle: §rThere is §6%number% bee §rin this hive.
+  AmountPlural: §rThere are §6%number% bees §rin this hive.
+Lore:
+  AmountSingle: §rThere is §6%number% bee §rin this hive.
+  AmountPlural: §rThere are §6%number% bees §rin this hive.
+
+
+# DON'T CHANGE THIS! IT MAY CAUSE DATA LOSS!
+ConfigVersion: 1

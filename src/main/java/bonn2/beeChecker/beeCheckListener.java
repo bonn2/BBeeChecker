@@ -28,7 +28,7 @@ public class beeCheckListener implements Listener  {
         CraftWorld cw = (CraftWorld) e.getPlayer().getLocation().getWorld(); // Get world player is in
         int numBees = 0;
         try {
-            if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && e.getHand().equals(EquipmentSlot.HAND) && i.getType() == Material.AIR) { // If the event is fired by main hand rightclick
+            if (config.getBoolean("ClickOnBlock") && e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && e.getHand().equals(EquipmentSlot.HAND) && i.getType() == Material.AIR) { // If the event is fired by main hand rightclick
                 if (b.getType() == Material.BEEHIVE || b.getType() == Material.BEE_NEST) { // Checks if block is a hive
                 
                     TileEntityBeehive te = (TileEntityBeehive) cw.getHandle().getTileEntity(new BlockPosition(b.getX(), b.getY(), b.getZ())); // Get Tile Entity
@@ -37,7 +37,7 @@ public class beeCheckListener implements Listener  {
 
                     String message;
                     if (numBees == 1) {
-                        message = config.getString("lang." + config.getString("Language") + ".AmountSingle");
+                        message = config.getString("ChatMessage.AmountSingle");
 
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
@@ -45,7 +45,7 @@ public class beeCheckListener implements Listener  {
 
                         p.sendMessage(message);
                     } else {
-                        message = config.getString("lang." + config.getString("Language") + ".AmountPlural");
+                        message = config.getString("ChatMessage.AmountPlural");
 
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
@@ -54,7 +54,7 @@ public class beeCheckListener implements Listener  {
                         p.sendMessage(message);
                     }
                 }
-            } else if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getHand().equals(EquipmentSlot.HAND)) {
+            } else if (config.getBoolean("ClickInAir") && e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getHand().equals(EquipmentSlot.HAND)) {
                 if (i.getType() == Material.BEEHIVE || i.getType() == Material.BEE_NEST) {
                     net.minecraft.server.v1_15_R1.ItemStack item = CraftItemStack.asNMSCopy(i);
                     numBees = 0;
@@ -71,7 +71,7 @@ public class beeCheckListener implements Listener  {
                 
                     String message;
                     if (numBees == 1) {
-                        message = config.getString("lang." + config.getString("Language") + ".AmountSingle");
+                        message = config.getString("ChatMessage.AmountSingle");
 
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
@@ -79,7 +79,7 @@ public class beeCheckListener implements Listener  {
 
                         p.sendMessage(message);
                     } else {
-                        message = config.getString("lang." + config.getString("Language") + ".AmountPlural");
+                        message = config.getString("ChatMessage.AmountPlural");
 
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);

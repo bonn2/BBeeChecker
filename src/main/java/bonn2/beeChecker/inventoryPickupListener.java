@@ -1,25 +1,27 @@
 package bonn2.beeChecker;
 
 import java.util.Arrays;
+// import java.util.logging.Logger;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryPickupItemEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 
-public class hopperPickup implements Listener {
+public class inventoryPickupListener implements Listener {
 
     FileConfiguration config = Main.plugin.getConfig();
+    // Logger logger = Main.plugin.getLogger();
     
     @EventHandler
-    public void onHopperPickup(InventoryPickupItemEvent e) {
+    public void onPlayerPickup(EntityPickupItemEvent e) {
         if (config.getBoolean("Lore")) {
-            
+
             ItemStack item = e.getItem().getItemStack();
             if (item.getType() == Material.BEEHIVE || item.getType() == Material.BEE_NEST) {
                 net.minecraft.server.v1_15_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
@@ -39,28 +41,21 @@ public class hopperPickup implements Listener {
 
                 String message;
                 if (numBees == 1) {
-                    message = config.getString("lang." + config.getString("Language") + ".AmountSingle");
+                    message = config.getString("Lore.AmountSingle");
 
                     while (message.contains("%number%")) {
                         message = message.replaceFirst("%number%", "" + numBees);
                     }
-
                     meta.setLore(Arrays.asList(message));
                 } else {
-                    message = config.getString("lang." + config.getString("Language") + ".AmountPlural");
+                    message = config.getString("Lore.AmountPlural");
 
                     while (message.contains("%number%")) {
                         message = message.replaceFirst("%number%", "" + numBees);
                     }
-
                     meta.setLore(Arrays.asList(message));
                 }
-                /* if (numBees == 1) {
-                    meta.setLore(Arrays.asList("§rThere is §6" + numBees + " bee §rin this hive."));
-                } else {
-                    meta.setLore(Arrays.asList("§rThere are §6" + numBees + " bees §rin this hive."));
-                } */
-            
+
                 item.setItemMeta(meta);
             }
         }

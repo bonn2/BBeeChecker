@@ -22,10 +22,14 @@ public class Main extends JavaPlugin
             getLogger().warning("No Config.yml found, making a new one!");
             saveResource("config.yml", false);
         } else { // Try to check if config file is valid
+            checkConfig("ClickOnBlock", true);
+            checkConfig("ClickInAir", true);
             checkConfig("Lore", true);
             checkConfig("Language", "enUS");
-            checkConfig("lang.enUS.AmountSingle", "§rThere is §6%number% bee §rin this hive.");
-            checkConfig("lang.enUS.AmountPlural", "§rThere are §6%number% bees §rin this hive.");
+            checkConfig("ChatMessage.AmountSingle", "§rThere is §6%number% bee §rin this hive.");
+            checkConfig("ChatMessage.AmountPlural", "§rThere are §6%number% bees §rin this hive.");
+            checkConfig("Lore.AmountSingle", "§rThere is §6%number% bee §rin this hive.");
+            checkConfig("Lore.AmountPlural", "§rThere are §6%number% bees §rin this hive.");
             saveConfig();
             reloadConfig();
         }
@@ -34,23 +38,14 @@ public class Main extends JavaPlugin
         
         getLogger().info("Initializing Event Listeners");
         getServer().getPluginManager().registerEvents(new beeCheckListener(), this);
-        if (getConfig().getBoolean("Lore")) {
-            getServer().getPluginManager().registerEvents(new inventoryPickup(), this);
-            getServer().getPluginManager().registerEvents(new hopperPickup(), this);
-        }
+        getServer().getPluginManager().registerEvents(new inventoryPickupListener(), this);
+        getServer().getPluginManager().registerEvents(new hopperPickupListener(), this);
         getLogger().info("Event Listeners Initialized!");
     }
     
     @Override
     public void onDisable() {
         getLogger().info("Have a nice day :)");
-    }
-
-    public void loreListeners() {
-        if (getConfig().getBoolean("Lore")) {
-            getServer().getPluginManager().registerEvents(new inventoryPickup(), this);
-            getServer().getPluginManager().registerEvents(new hopperPickup(), this);
-        }
     }
 
     public void checkConfig(String Name, String Value) {
