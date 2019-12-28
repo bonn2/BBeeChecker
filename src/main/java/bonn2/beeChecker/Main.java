@@ -21,21 +21,14 @@ public class Main extends JavaPlugin
         if (!configyml.exists()) { // Checks if config file exists
             getLogger().warning("No Config.yml found, making a new one!");
             saveResource("config.yml", false);
-        } else { // Try to check if config file is valid
-            checkConfig("ClickOnBlock", true);
-            checkConfig("ClickInAir", true);
-            checkConfig("Lore", true);
-            checkConfig("Language", "enUS");
-            checkConfig("ChatMessage.AmountSingle", "§rThere is §6%number% bee §rin this hive.");
-            checkConfig("ChatMessage.AmountPlural", "§rThere are §6%number% bees §rin this hive.");
-            checkConfig("Lore.AmountSingle", "§rThere is §6%number% bee §rin this hive.");
-            checkConfig("Lore.AmountPlural", "§rThere are §6%number% bees §rin this hive.");
-            saveConfig();
-            reloadConfig();
         }
 
         getLogger().info("Config Initialized!");
         
+        getLogger().info("Initializing Commands");
+        this.getCommand("bb").setExecutor(new commandListener());
+        getLogger().info("Commands Initialized");
+
         getLogger().info("Initializing Event Listeners");
         getServer().getPluginManager().registerEvents(new beeCheckListener(), this);
         getServer().getPluginManager().registerEvents(new inventoryPickupListener(), this);

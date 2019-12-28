@@ -1,7 +1,6 @@
 package bonn2.beeChecker;
 
 import java.util.Arrays;
-// import java.util.logging.Logger;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,11 +15,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class inventoryPickupListener implements Listener {
 
     FileConfiguration config = Main.plugin.getConfig();
-    // Logger logger = Main.plugin.getLogger();
     
     @EventHandler
     public void onPlayerPickup(EntityPickupItemEvent e) {
-        if (config.getBoolean("Lore")) {
+        if (config.getBoolean("lore")) {
 
             ItemStack item = e.getItem().getItemStack();
             if (item.getType() == Material.BEEHIVE || item.getType() == Material.BEE_NEST) {

@@ -13,15 +13,18 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.server.v1_15_R1.BlockPosition;
 import net.minecraft.server.v1_15_R1.TileEntityBeehive;
 
 public class beeCheckListener implements Listener  {
     
-    FileConfiguration config = Main.plugin.getConfig();
-
     @EventHandler
     public void onPlayerUse(PlayerInteractEvent e) {
+
+        FileConfiguration config = Main.plugin.getConfig();
+
         Player p = e.getPlayer();
         Block b = e.getClickedBlock();
         ItemStack i = p.getInventory().getItemInMainHand();
@@ -43,7 +46,14 @@ public class beeCheckListener implements Listener  {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
 
-                        p.sendMessage(message);
+                        if (config.getString("MessageLocation").equals("chat")) {
+                            p.sendMessage(message);
+                        } else if (config.getString("MessageLocation").equals("hotbar")) {
+                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
+                        } else {
+                            Main.plugin.getLogger().warning("Invalid Chat Location in config.yml!");
+                        }
+                        
                     } else {
                         message = config.getString("ChatMessage.AmountPlural");
 
@@ -51,7 +61,13 @@ public class beeCheckListener implements Listener  {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
 
-                        p.sendMessage(message);
+                        if (config.getString("MessageLocation").equals("chat")) {
+                            p.sendMessage(message);
+                        } else if (config.getString("MessageLocation").equals("hotbar")) {
+                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
+                        } else {
+                            Main.plugin.getLogger().warning("Invalid Chat Location in config.yml!");
+                        }
                     }
                 }
             } else if (config.getBoolean("ClickInAir") && e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getHand().equals(EquipmentSlot.HAND)) {
@@ -77,7 +93,13 @@ public class beeCheckListener implements Listener  {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
 
-                        p.sendMessage(message);
+                        if (config.getString("MessageLocation").equals("chat")) {
+                            p.sendMessage(message);
+                        } else if (config.getString("MessageLocation").equals("hotbar")) {
+                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
+                        } else {
+                            Main.plugin.getLogger().warning("Invalid Chat Location in config.yml!");
+                        }
                     } else {
                         message = config.getString("ChatMessage.AmountPlural");
 
@@ -85,10 +107,16 @@ public class beeCheckListener implements Listener  {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
 
-                        p.sendMessage(message);
+                        if (config.getString("MessageLocation").equals("chat")) {
+                            p.sendMessage(message);
+                        } else if (config.getString("MessageLocation").equals("hotbar")) {
+                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
+                        } else {
+                            Main.plugin.getLogger().warning("Invalid Chat Location in config.yml!");
+                        }
                     }
                 }
             }
-        } catch (Exception ignored) { }
+        } catch (Exception ignored) {}
     }
 }

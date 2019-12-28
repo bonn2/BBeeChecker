@@ -18,7 +18,7 @@ public class hopperPickupListener implements Listener {
     
     @EventHandler
     public void onHopperPickup(InventoryPickupItemEvent e) {
-        if (config.getBoolean("Lore")) {
+        if (config.getBoolean("lore")) {
             
             ItemStack item = e.getItem().getItemStack();
             if (item.getType() == Material.BEEHIVE || item.getType() == Material.BEE_NEST) {
