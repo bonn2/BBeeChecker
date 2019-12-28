@@ -33,7 +33,7 @@ public class inventoryPickupListener implements Listener {
                             numBees++;
                         }
                     }
-                } catch (Exception ex) {numBees = 0;}
+                } catch (Exception ignored) {numBees = 0;}
 
                 ItemMeta meta = item.getItemMeta();
 

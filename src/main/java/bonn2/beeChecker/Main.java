@@ -17,12 +17,10 @@ public class Main extends JavaPlugin
         
         getLogger().info("Initializing Config");
         File configyml = new File(getDataFolder() + File.separator + "config.yml");
-
         if (!configyml.exists()) { // Checks if config file exists
             getLogger().warning("No Config.yml found, making a new one!");
             saveResource("config.yml", false);
         }
-
         getLogger().info("Config Initialized!");
         
         getLogger().info("Initializing Commands");
@@ -41,19 +39,4 @@ public class Main extends JavaPlugin
         getLogger().info("Have a nice day :)");
     }
 
-    public void checkConfig(String Name, String Value) {
-        if (getConfig().get(Name) == null) {
-            getConfig().set(Name, Value);
-            saveConfig();
-            reloadConfig();
-        }
-    }
-
-    public void checkConfig(String Name, Boolean Value) {
-        if (getConfig().get(Name) == null) {
-            getConfig().set(Name, Value);
-            saveConfig();
-            reloadConfig();
-        }
-    }
 }
