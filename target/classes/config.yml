@@ -1,0 +1,20 @@
+###################
+#                 #
+#   BBeeChecker   #
+#    By: bonn2    #
+#                 #
+###################
+
+
+# Add lore to hives (This will persist after plugin is uninstalled)
+Lore: true
+
+# Language preset. If you don't see yours in the list you can add one using the example format below
+Language: enUS
+lang:
+  enUS:
+    AmountSingle: §rThere is §6%number% bee §rin this hive.
+    AmountPlural: §rThere are §6%number% bees §rin this hive.
+  example:
+    AmountSingle: Write what you want here
+    AmountPlural: And here

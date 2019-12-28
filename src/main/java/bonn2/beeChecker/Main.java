@@ -20,12 +20,7 @@ public class Main extends JavaPlugin
 
         if (!configyml.exists()) { // Checks if config file exists
             getLogger().warning("No Config.yml found, making a new one!");
-            getConfig().addDefault("Lore", true);
-            getConfig().addDefault("Language", "enUS");
-            getConfig().addDefault("lang.enUS.AmountSingle", "§rThere is §6%number% bee §rin this hive.");
-            getConfig().addDefault("lang.enUS.AmountPlural", "§rThere are §6%number% bees §rin this hive.");
-            getConfig().options().copyDefaults(true);
-            saveConfig();
+            saveResource("config.yml", false);
         } else { // Try to check if config file is valid
             checkConfig("Lore", true);
             checkConfig("Language", "enUS");
