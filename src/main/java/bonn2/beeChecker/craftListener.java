@@ -1,43 +1,61 @@
 package bonn2.beeChecker;
 
-/*import java.util.Arrays;
+import java.util.Arrays;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
-import org.bukkit.event.EventHandler;*/
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-/*import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;*/
+import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class craftListener implements Listener {
-/*    @EventHandler
-    public void onPlayerPickup(CraftItemEvent e) {
-        ItemStack item = e.getInventory().getResult();
-        if (item.getType() == Material.BEEHIVE || item.getType() == Material.BEE_NEST) {
-            net.minecraft.server.v1_15_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
-            int numBees = 0;
 
-            try {
-                String s = nmsItem.getTag().toString();
-                String text = "HasStung:";
-                for (int i = 0; i < s.length(); i++) {
-                    if (s.substring(i).startsWith(text)) {
-                        numBees++;
+    FileConfiguration config = Main.plugin.getConfig();
+    
+    @EventHandler
+    public void onCraft(InventoryClickEvent e) {
+        ItemStack item = e.getCurrentItem();
+        if (item.getType() == Material.BEE_NEST || item.getType() == Material.BEEHIVE && config.getBoolean("lore")) {
+
+            if (item.getType() == Material.BEEHIVE || item.getType() == Material.BEE_NEST) {
+                net.minecraft.server.v1_15_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
+                int numBees = 0;
+
+                try {
+                    String s = nmsItem.getTag().toString();
+                    String text = "HasStung:";
+                    for (int i = 0; i < s.length(); i++) {
+                        if (s.substring(i).startsWith(text)) {
+                            numBees++;
+                        }
                     }
-                }
-            } catch (Exception ex) {numBees = 0;}
+                } catch (Exception ignored) {numBees = 0;}
 
-            ItemMeta meta = item.getItemMeta();
+                ItemMeta meta = item.getItemMeta();
 
-            if (numBees == 1) {
-                meta.setLore(Arrays.asList("§rThere is §6" + numBees + " bee §rin this hive."));
-            } else {
-                meta.setLore(Arrays.asList("§rThere are §6" + numBees + " bees §rin this hive."));
-            }
+                String message;
+                    if (numBees == 1) {
+                        message = config.getString("Lore.AmountSingle");
+
+                        while (message.contains("%number%")) {
+                            message = message.replaceFirst("%number%", "" + numBees);
+                        }
+                        meta.setLore(Arrays.asList(message));
+                    } else {
+                        message = config.getString("Lore.AmountPlural");
+
+                        while (message.contains("%number%")) {
+                            message = message.replaceFirst("%number%", "" + numBees);
+                        }
+                        meta.setLore(Arrays.asList(message));
+                    }
             
-            item.setItemMeta(meta);
+                item.setItemMeta(meta);
+            }
         }
-    } */
+    }
 }

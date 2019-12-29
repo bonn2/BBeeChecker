@@ -31,6 +31,7 @@ public class Main extends JavaPlugin
         getServer().getPluginManager().registerEvents(new beeCheckListener(), this);
         getServer().getPluginManager().registerEvents(new inventoryPickupListener(), this);
         getServer().getPluginManager().registerEvents(new hopperPickupListener(), this);
+        //getServer().getPluginManager().registerEvents(new craftListener(), this);
         getLogger().info("Event Listeners Initialized!");
     }
     
