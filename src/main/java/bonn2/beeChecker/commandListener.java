@@ -42,24 +42,27 @@ public class commandListener implements CommandExecutor {
         if (InvalidUsage) {sender.sendMessage(config.getString("InvalidCommand"));}
         sender.sendMessage("§6BBeeChecker §eby bonn2");
         sender.sendMessage("§6Version: §e" + pdf.getVersion());
-        sender.sendMessage("§6Usage: §e/bb <reload>");
+        if (sender.hasPermission("BBeeChecker.reload")) {sender.sendMessage("§6Usage: §e/bb <reload>");}
     }
 
     public void reloadOutput(CommandSender sender) {
+        if (sender.hasPermission("BBeeChecker.reload")) {
+            FileConfiguration config = Main.plugin.getConfig();
 
-        FileConfiguration config = Main.plugin.getConfig();
-
-        sender.sendMessage(config.getString("ReloadingConfig"));
-        try {
-            File configyml = new File(Main.plugin.getDataFolder() + File.separator + "config.yml");
-            if (!configyml.exists()) { // Checks if config file exists
-                Main.plugin.getLogger().warning("No Config.yml found, making a new one!");
-                Main.plugin.saveResource("config.yml", false);
+            sender.sendMessage(config.getString("ReloadingConfig"));
+            try {
+                File configyml = new File(Main.plugin.getDataFolder() + File.separator + "config.yml");
+                if (!configyml.exists()) { // Checks if config file exists
+                    Main.plugin.getLogger().warning("No Config.yml found, making a new one!");
+                    Main.plugin.saveResource("config.yml", false);
+                }
+                Main.plugin.reloadConfig();
+                sender.sendMessage(config.getString("ReloadedConfigSuccess"));
+            } catch (Exception ignored) {
+                sender.sendMessage(config.getString("ReloadedConfigFail"));
             }
-            Main.plugin.reloadConfig();
-            sender.sendMessage(config.getString("ReloadedConfigSuccess"));
-        } catch (Exception ignored) {
-            sender.sendMessage(config.getString("ReloadedConfigFail"));
+        } else {
+            sender.sendMessage("§cYou do not have permission to do that!");
         }
     }
 }
