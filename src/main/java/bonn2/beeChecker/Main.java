@@ -21,6 +21,7 @@ public class Main extends JavaPlugin
             getLogger().warning("No Config.yml found, making a new one!");
             saveResource("config.yml", false);
         }
+        if (getConfig().getInt("ConfigVersion") == 1) {updateConfig();}
         getLogger().info("Config Initialized!");
         
         getLogger().info("Initializing Commands");
@@ -38,6 +39,36 @@ public class Main extends JavaPlugin
     @Override
     public void onDisable() {
         getLogger().info("Have a nice day :)");
+    }
+
+    public void updateConfig() {
+        getLogger().warning("Detected config version 1 updating to version 2!");
+        boolean clickonblock = getConfig().getBoolean("ClickOnBlock");
+        boolean clickinair = getConfig().getBoolean("ClickInAir");
+        String messagelocation = getConfig().getString("MessageLocation");
+        String loresingle = getConfig().getString("Lore.AmountSingle");
+        String loreplural = getConfig().getString("Lore.AmountPlural");
+        String messagesingle = getConfig().getString("ChatMessage.AmountSingle");
+        String messageplural = getConfig().getString("ChatMessage.AmountPlural");
+        String invcommand = getConfig().getString("InvalidCommand");
+        String reloadconfig = getConfig().getString("ReloadingConfig");
+        String reloadconfigsuccess = getConfig().getString("ReloadingConfigSuccess");
+        String reloadconfigfail = getConfig().getString("ReloadingConfigFail");
+        saveResource("config.yml", true);
+        reloadConfig();
+        getConfig().set("ClickOnBlock", clickonblock);
+        getConfig().set("ClickInAir", clickinair);
+        getConfig().set("MessageLocation", messagelocation);
+        getConfig().set("Lore.AmountSingle", loresingle);
+        getConfig().set("Lore.AmountPlural", loreplural);
+        getConfig().set("ChatMessage.AmountSingle", messagesingle);
+        getConfig().set("ChatMessage.AmountPlural", messageplural);
+        getConfig().set("InvalidCommand", invcommand);
+        getConfig().set("ReloadingConfig", reloadconfig);
+        getConfig().set("ReloadingCongigSuccess", reloadconfigsuccess);
+        getConfig().set("ReloadingCongigFail", reloadconfigfail);
+        saveConfig();
+        reloadConfig();
     }
 
 }

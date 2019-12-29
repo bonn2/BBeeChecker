@@ -15,7 +15,7 @@ ClickInAir: false
 MessageLocation: chat
 
 # Add lore to hives (This will persist after plugin is uninstalled)
-Lore: true
+lore: true
 
 # Messages the plugin will use.
 # Use %number% to represent the number of bees
@@ -40,4 +40,4 @@ ReloadedConfigFail: §cFailed to Reload Config!
 
 
 # DON'T CHANGE THIS! IT MAY CAUSE DATA LOSS!
-ConfigVersion: 1
+ConfigVersion: 2
