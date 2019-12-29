@@ -20,17 +20,17 @@ Lore: true
 # Messages the plugin will use.
 # Use %number% to represent the number of bees
 
-# Message that appears in item lore
+# Messages that appears in item lore
 Lore:
   AmountSingle: §rThere is §6%number% bee §rin this hive.
   AmountPlural: §rThere are §6%number% bees §rin this hive.
 
-# Message that pops up in chat
+# Messages that pops up in chat
 ChatMessage:
   AmountSingle: §rThere is §6%number% bee §rin this hive.
   AmountPlural: §rThere are §6%number% bees §rin this hive.
 
-# Message that appears when an invalid command is entered
+# Messages that appears when an invalid command is entered
 InvalidCommand: §cInvalid Command Usage!
 
 # Messages that appears when config is reloaded
