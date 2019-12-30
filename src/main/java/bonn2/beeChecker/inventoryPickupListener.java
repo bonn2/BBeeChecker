@@ -14,10 +14,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class inventoryPickupListener implements Listener {
 
-    FileConfiguration config = Main.plugin.getConfig();
-    
     @EventHandler
     public void onPlayerPickup(EntityPickupItemEvent e) {
+
+        FileConfiguration config = Main.plugin.getConfig();
+
         if (config.getBoolean("lore")) {
 
             ItemStack item = e.getItem().getItemStack();

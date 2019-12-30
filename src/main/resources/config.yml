@@ -22,13 +22,13 @@ lore: true
 
 # Messages that appears in item lore
 Lore:
-  AmountSingle: §rThere is §6%number% bee §rin this hive.
-  AmountPlural: §rThere are §6%number% bees §rin this hive.
+  AmountSingle: §rThere is §6%number% bee §rinside.
+  AmountPlural: §rThere are §6%number% bees §rinside.
 
 # Messages that pops up in chat
 ChatMessage:
-  AmountSingle: §rThere is §6%number% bee §rin this hive.
-  AmountPlural: §rThere are §6%number% bees §rin this hive.
+  AmountSingle: §rThere is §6%number% bee §rinside.
+  AmountPlural: §rThere are §6%number% bees §rinside.
 
 # Messages that appears when an invalid command is entered
 InvalidCommand: §cInvalid Command Usage!

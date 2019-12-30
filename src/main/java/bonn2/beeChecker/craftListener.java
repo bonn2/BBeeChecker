@@ -13,11 +13,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class craftListener implements Listener {
-
-    FileConfiguration config = Main.plugin.getConfig();
     
     @EventHandler
     public void onCraft(InventoryClickEvent e) {
+
+        FileConfiguration config = Main.plugin.getConfig();
+
         ItemStack item = e.getCurrentItem();
         if (item.getType() == Material.BEE_NEST || item.getType() == Material.BEEHIVE && config.getBoolean("lore")) {
 

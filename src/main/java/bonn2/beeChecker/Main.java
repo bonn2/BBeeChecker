@@ -52,8 +52,8 @@ public class Main extends JavaPlugin
         String messageplural = getConfig().getString("ChatMessage.AmountPlural");
         String invcommand = getConfig().getString("InvalidCommand");
         String reloadconfig = getConfig().getString("ReloadingConfig");
-        String reloadconfigsuccess = getConfig().getString("ReloadingConfigSuccess");
-        String reloadconfigfail = getConfig().getString("ReloadingConfigFail");
+        String reloadconfigsuccess = getConfig().getString("ReloadedConfigSuccess");
+        String reloadconfigfail = getConfig().getString("ReloadedConfigFail");
         saveResource("config.yml", true);
         reloadConfig();
         getConfig().set("ClickOnBlock", clickonblock);
@@ -65,8 +65,8 @@ public class Main extends JavaPlugin
         getConfig().set("ChatMessage.AmountPlural", messageplural);
         getConfig().set("InvalidCommand", invcommand);
         getConfig().set("ReloadingConfig", reloadconfig);
-        getConfig().set("ReloadingCongigSuccess", reloadconfigsuccess);
-        getConfig().set("ReloadingCongigFail", reloadconfigfail);
+        getConfig().set("ReloadedCongigSuccess", reloadconfigsuccess);
+        getConfig().set("ReloadedCongigFail", reloadconfigfail);
         saveConfig();
         reloadConfig();
     }

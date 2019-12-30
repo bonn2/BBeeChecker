@@ -13,11 +13,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class hopperPickupListener implements Listener {
-
-    FileConfiguration config = Main.plugin.getConfig();
     
     @EventHandler
     public void onHopperPickup(InventoryPickupItemEvent e) {
+
+        FileConfiguration config = Main.plugin.getConfig();
+
         if (config.getBoolean("lore")) {
             
             ItemStack item = e.getItem().getItemStack();

@@ -6,7 +6,7 @@
 
   <groupId>bonn2.beeChecker</groupId>
   <artifactId>BBeeChecker</artifactId>
-  <version>1.9.1</version>
+  <version>1.9.2</version>
 
   <packaging>jar</packaging>
   <properties>
