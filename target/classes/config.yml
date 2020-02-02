@@ -38,6 +38,9 @@ ReloadingConfig: §6Reloading Config!
 ReloadedConfigSuccess: §eSuccessfully Reloaded Config!
 ReloadedConfigFail: §cFailed to Reload Config!
 
+# Set to true to disable metrics
+disableMetrics: false
+
 
 # DON'T CHANGE THIS! IT MAY CAUSE DATA LOSS!
-ConfigVersion: 2
+ConfigVersion: 3

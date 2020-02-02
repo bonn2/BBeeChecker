@@ -6,7 +6,7 @@
 
   <groupId>bonn2.beeChecker</groupId>
   <artifactId>BBeeChecker</artifactId>
-  <version>1.9.2</version>
+  <version>1.9.3</version>
 
   <packaging>jar</packaging>
   <properties>
@@ -18,6 +18,10 @@
       <repository>
           <id>spigot-repo</id>
           <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+      </repository>
+      <repository>
+        <id>CodeMC</id>
+        <url>https://repo.codemc.org/repository/maven-public</url>
       </repository>
   </repositories>
   <dependencies>
@@ -33,9 +37,38 @@
             <version>1.15-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>org.bstats</groupId>
+        <artifactId>bstats-bukkit</artifactId>
+        <version>1.7</version>
+        <scope>compile</scope>
+      </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.1.0</version>
+        <!-- Do not include the <configuration>...</configuration> part if you are using Sponge! -->
+        <configuration>
+          <relocations>
+            <relocation>
+              <pattern>org.bstats</pattern>
+              <shadedPattern>bonn2.beeChecker.util</shadedPattern>
+            </relocation>
+          </relocations>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
     <resources>
       <resource>
         <directory>${project.basedir}/src/main/resources</directory>
