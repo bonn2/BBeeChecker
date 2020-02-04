@@ -23,7 +23,10 @@ public class commandListener implements CommandExecutor {
                 } else if (args[0].toString().matches("reload")) {
                     reloadOutput(sender);
                     break;
-                } else {
+                } /*else if (args[0].toString().matches("count")) {
+                    countOutput(sender);
+                    break;
+                } */else {
                     helpOutput(sender, true);
                     break;
                 }
@@ -65,4 +68,13 @@ public class commandListener implements CommandExecutor {
             sender.sendMessage("§cYou do not have permission to do that!");
         }
     }
+
+    /*public void countOutput(CommandSender sender) {
+        if (sender.hasPermission("BBeeChecker.count")) {
+            FileConfiguration config = Main.plugin.getConfig();
+        
+            sender.sendMessage("§e" + Main.beesCount.toString() + " bees.");
+        }
+
+    }*/
 }

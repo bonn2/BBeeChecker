@@ -45,6 +45,7 @@ public class hopperPickupListener implements Listener {
                     while (message.contains("%number%")) {
                         message = message.replaceFirst("%number%", "" + numBees);
                     }
+                    Main.beesCount = Main.beesCount + numBees;
 
                     meta.setLore(Arrays.asList(message));
                 } else {
@@ -53,6 +54,7 @@ public class hopperPickupListener implements Listener {
                     while (message.contains("%number%")) {
                         message = message.replaceFirst("%number%", "" + numBees);
                     }
+                    Main.beesCount = Main.beesCount + numBees;
 
                     meta.setLore(Arrays.asList(message));
                 }

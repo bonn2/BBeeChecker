@@ -1,6 +1,6 @@
 main: bonn2.beeChecker.Main
 name: BBeeChecker
-version: 1.9.3
+version: 1.9.4
 author: bonn2
 api-version: 1.15
 

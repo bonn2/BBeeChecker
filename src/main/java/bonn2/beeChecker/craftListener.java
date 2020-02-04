@@ -45,6 +45,7 @@ public class craftListener implements Listener {
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
+                        Main.beesCount = Main.beesCount + numBees;
                         meta.setLore(Arrays.asList(message));
                     } else {
                         message = config.getString("Lore.AmountPlural");
@@ -52,6 +53,7 @@ public class craftListener implements Listener {
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
+                        Main.beesCount = Main.beesCount + numBees;
                         meta.setLore(Arrays.asList(message));
                     }
             

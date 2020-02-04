@@ -45,6 +45,7 @@ public class beeCheckListener implements Listener  {
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
+                        Main.beesCount = Main.beesCount + numBees;
 
                         if (config.getString("MessageLocation").equals("chat")) {
                             p.sendMessage(message);
@@ -60,6 +61,7 @@ public class beeCheckListener implements Listener  {
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
+                        Main.beesCount = Main.beesCount + numBees;
 
                         if (config.getString("MessageLocation").equals("chat")) {
                             p.sendMessage(message);
@@ -92,6 +94,7 @@ public class beeCheckListener implements Listener  {
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
+                        Main.beesCount = Main.beesCount + numBees;
 
                         if (config.getString("MessageLocation").equals("chat")) {
                             p.sendMessage(message);
@@ -106,6 +109,7 @@ public class beeCheckListener implements Listener  {
                         while (message.contains("%number%")) {
                             message = message.replaceFirst("%number%", "" + numBees);
                         }
+                        Main.beesCount = Main.beesCount + numBees;
 
                         if (config.getString("MessageLocation").equals("chat")) {
                             p.sendMessage(message);

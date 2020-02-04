@@ -1,6 +1,7 @@
 package bonn2.beeChecker;
 
 import java.io.File;
+import java.util.concurrent.Callable;
 
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,10 +10,12 @@ public class Main extends JavaPlugin
 {
 
     public static Main plugin;
+    public static Integer beesCount;
 
     @Override
     public void onEnable() {
         plugin = this;
+        beesCount = 0;
 
         getLogger().info("Originaly made for mc.envirocraft.net!");
         
@@ -39,9 +42,16 @@ public class Main extends JavaPlugin
 
         if (getConfig().getBoolean("disableMetrics") == false) {
             getLogger().info("Enabling Metrics, thanks for helping me make the plugin better.");
-            int pluginId = 6414; 
+            int pluginId = 6414;
             Metrics metrics = new Metrics(this, pluginId);
-            
+            metrics.addCustomChart(new Metrics.SingleLineChart("numBees", new Callable<Integer>() {
+                @Override
+                public Integer call() throws Exception {
+                    Integer numBees = beesCount;
+                    beesCount = 0;
+                    return numBees;
+                }
+            }));
         }
     }
     
