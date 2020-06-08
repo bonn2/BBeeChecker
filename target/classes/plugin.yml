@@ -1,9 +1,0 @@
-main: bonn2.beeChecker.Main
-name: BBeeChecker
-version: 1.9.4
-author: bonn2
-api-version: 1.15
-
-commands: 
-  bb:
-    description: Main command for BBeeChecker
