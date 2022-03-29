@@ -28,7 +28,7 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x ./gradlew
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@8a7ba1315bd74ba68dcb9ee794aac0d41f83c7c0
+      uses: gradle/gradle-build-action@f2b17e4179f7c2d4c649260324cbd47f2e8f904a
       with:
         arguments: build
     - name: Upload a Build Artifact
